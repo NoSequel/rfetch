@@ -38,15 +38,16 @@ pub fn get_packages(managers: Vec<PackageManager>) -> i32 {
             command.arg(arg);
         }
 
-        let result = command.stdout(Stdio::piped())
-            .spawn()
-            .unwrap();
+        let result = command.stdout(Stdio::piped()).spawn().unwrap();
 
         for arg in manager.piped_command.arguments {
             piped_command.arg(arg);
         }
 
-        let output = &piped_command.stdin(result.stdout.unwrap()).output().expect("");
+        let output = &piped_command
+            .stdin(result.stdout.unwrap())
+            .output()
+            .expect("");
         let output_str = &mut String::from_utf8_lossy(&output.stdout).to_string();
 
         output_str.retain(|c| c.is_digit(10));
