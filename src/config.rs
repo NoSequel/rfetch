@@ -6,16 +6,35 @@ pub fn get_systems() -> Vec<System> {
     return vec![
         System::new("Gentoo", "Gentoo Linux"),
         System::new("Arch", "Arch Linux"),
+        System::new("Void", "Void Linux"),
+        System::new("Debian", "Debian Linux"),
     ];
 }
 
 pub fn get_package_managers() -> Vec<PackageManager> {
-    return vec![PackageManager::new(
-        "pacman",
-        "/usr/bin/pacman",
-        CommandData::new("pacman".to_string(), vec!["-Qq".to_string()]),
-        CommandData::new("wc".to_string(), vec!["-l".to_string()]),
-    )];
+    return vec![
+        PackageManager::new(
+            "pacman",
+            "/usr/bin/pacman",
+            CommandData::new("pacman".to_string(), vec!["-Qq".to_string()]),
+            CommandData::new("wc".to_string(), vec!["-l".to_string()]),
+        ),
+        PackageManager::new(
+            "xbps",
+            "/usr/bin/xbps-install",
+            CommandData::new("xbps-query".to_string(), vec!["-l".to_string()]),
+            CommandData::new("wc".to_string(), vec!["-l".to_string()]),
+        ),
+        PackageManager::new(
+            "dpkg",
+            "/usr/bin/dpkg-query",
+            CommandData::new(
+                "dpkg-query".to_string(),
+                vec!["-f".to_string(), "'.\n'".to_string(), "-W".to_string()],
+            ),
+            CommandData::new("wc".to_string(), vec!["-l".to_string()]),
+        ),
+    ];
 }
 
 pub fn get_fields(system: System) -> Vec<DataField> {

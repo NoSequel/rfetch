@@ -1,4 +1,8 @@
+use std::any::Any;
+
 use std::fs;
+use std::fs::File;
+
 use std::process::{Command, Stdio};
 
 pub fn get_system(systems: Vec<System>) -> Option<System> {
@@ -19,7 +23,7 @@ pub fn get_package_managers(managers: &mut Vec<PackageManager>) -> Vec<PackageMa
     let to_return: &mut Vec<PackageManager> = &mut Vec::new();
 
     for manager in managers {
-        if let Err(_e) = fs::read_to_string(manager.file_path.clone()) {
+        if let Ok(_ignored) = File::open(manager.file_path.clone()) {
             to_return.push(manager.clone());
         }
     }
