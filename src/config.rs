@@ -40,24 +40,24 @@ pub fn get_package_managers() -> Vec<PackageManager> {
 pub fn get_fields(system: System) -> Vec<DataField> {
     return vec![
         DataField::new(format!(
-            "{}@{}",
+            "{}@{}\n",
             env::var("USER").unwrap_or_else(|_x| "".to_string()).red(),
             env::var("hostname")
                 .unwrap_or_else(|_x| "".to_string())
                 .red()
         )),
         DataField::new(format!(
-            "{} ~ {}",
+            "{} ~ {}\n",
             "os".white(),
             system.os_display_name.red()
         )),
         DataField::new(format!(
-            "{} ~ {}",
+            "{} ~ {}\n",
             "sh".white(),
             env::var("SHELL").unwrap_or_else(|_x| "".to_string()).red()
         )),
         DataField::new(format!(
-            "{} ~ {}",
+            "{} ~ {}\n",
             "pkgs".white(),
             os::get_packages(os::get_package_managers(&mut get_package_managers()))
                 .to_string()

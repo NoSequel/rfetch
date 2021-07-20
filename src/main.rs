@@ -7,7 +7,7 @@ fn main() {
     match system {
         Some(system) => {
             for field in config::get_fields(system) {
-                println!("{}", field.format);
+                print!("{}", field.format);
             }
         }
         _ => panic!("No supported OS has been found on your system."),
