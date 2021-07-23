@@ -24,3 +24,7 @@ There is a ``config.rs`` file included with the source code, this file is a lot 
 
     # 3. Complete!
     The setup process should now be complete, simply type ``rfetch`` in your personal favorite shell, and it should output the system information!
+
+## Benchmark Results
+Although speed doesn't mean a lot in a simple system information fetch program, I've benchmarked this against 3 other system information fetch programs, including [neofetch](https://github.com/dylanaraps/neofetch), [pfetch](https://github.com/dylanaraps/pfetch), and [efetch](https://github.com/NoSequel/efetch), results:
+<img src="https://raw.githubusercontent.com/NoSequel/rfetch/main/screenshots/screenshot2.png" width="100%" align="right">
